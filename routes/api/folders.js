@@ -1,17 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { getAllFolders, createFolder, updateFolder, deleteFolder } = require('../controllers/folders');
+const foldersCtrl = require("../../controllers/api/folders");
 
 // GET all folders
-router.get('/folders', getAllFolders);
+router.get("/folders", foldersCtrl.getAllTaskFolders);
 
 // POST create folder
-router.post('/folders', createFolder);
+router.post("/folders", foldersCtrl.createTaskFolder);
 
 // PUT update folder
-router.put('/folders/:folderId', updateFolder);
+router.put("/folders/:folderId", foldersCtrl.updateTaskFolder);
 
 // DELETE delete folder
-router.delete('/folders/:folderId', deleteFolder);
+router.delete("/folders/:folderId", foldersCtrl.deleteTaskFolder);
 
 module.exports = router;
