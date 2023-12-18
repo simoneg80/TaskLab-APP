@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 export default function NewTaskListForm({ addTaskList }) {
     const [newForm, setNewForm] = useState({
         name: "",
         tasks: []
     });
-}
+
     function handleChange(evt) {
         setNewForm({ 
             ...newForm, [evt.target.name]: evt.target.value });
@@ -30,3 +32,5 @@ export default function NewTaskListForm({ addTaskList }) {
             </form>
         </>
     );
+
+}

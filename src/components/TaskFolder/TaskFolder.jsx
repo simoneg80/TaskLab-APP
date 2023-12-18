@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TaskList from "../TaskList/TaskList";
 // import "./TaskFolder.css";
 
-export default function TaskFolder( {tasks }) {
+export default function TaskFolder({ tasks } ) {
   const [folderName, setFolderName] = useState("");
   const [folders, setFolders] = useState([]);
   const [editIdx, setEditIdx] = useState(-1);
@@ -48,10 +48,10 @@ export default function TaskFolder( {tasks }) {
 
       <div>
         {folders.map((folder, idx) => (
-          <Link to={`/TaskList/${folder.idx}`}>
-            <div key={idx} className="folder-card">
+        //   <Link to={`/TaskFolder/${idx}`}>
+            <div key={idx} idx={idx} className="folder-card">
               {editIdx === idx ? (
-                <inputgit
+                <input
                   type="text"
                   value={editedName}
                   onChange={(e) => setEditedName(e.target.value)}
@@ -65,9 +65,10 @@ export default function TaskFolder( {tasks }) {
                 <button onClick={handleFolderUpdate}>Save</button>
               )}
             </div>
-          </Link>
+        //   </Link>
         ))}
       </div>
+      
     </>
   );
 }

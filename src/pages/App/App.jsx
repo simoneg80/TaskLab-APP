@@ -7,9 +7,17 @@ import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
 import TaskList from "../../components/TaskList/TaskList";
+import TaskListItem from "../../components/TaskListItem/TaskListItem";
+import NewTaskListForm from "../../components/NewTaskListForm/NewTaskListForm";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [tasks, setTasks] = useState(["task1", "task2", "task3"]);
+
+
+  function addTask(newTask) {
+    setTasks([...tasks, newTask]);
+  }
 
   return (
     <main className="App">
@@ -19,10 +27,13 @@ export default function App() {
           <Routes>
             <Route
               path="/profile"
-              element={<UserProfilePage user={user} setUser={setUser} />}
-            />
+              element={<UserProfilePage user={user} setUser={setUser} />} />
+            {/* <Route path="/TaskFolder/:folderId" component={<TaskList />} /> */}
           </Routes>
           <TaskFolder />
+          {/* <TaskList  /> */}
+          <TaskList tasks={tasks}  />
+          <NewTaskListForm addTask={addTask} />
         </>
       ) : (
         <AuthPage setUser={setUser} />
