@@ -12,7 +12,11 @@ import NewTaskListForm from "../../components/NewTaskListForm/NewTaskListForm";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [tasks, setTasks] = useState(["task1", "task2", "task3"]);
+  const [tasks, setTasks] = useState([
+    {name: "task1"}, 
+    {name: "task2"},
+    {name: "task3"}
+  ]);
 
 
   function addTask(newTask) {
