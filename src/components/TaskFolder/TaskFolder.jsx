@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import TaskList from "../TaskList/TaskList";
+import "./TaskFolder.css";  
 
 export default function TaskFolder() {
   const [folderName, setFolderName] = useState("");
