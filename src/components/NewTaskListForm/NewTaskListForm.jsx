@@ -8,8 +8,11 @@ export default function NewTaskListForm({ addTaskList }) {
 
     function handleChange(evt) {
         setNewForm({ 
-            ...newForm, [evt.target.name]: evt.target.value });
+            ...newForm, 
+            [evt.target.name]: evt.target.value 
+        });
     };
+
     function handleSubmit(evt) {
         evt.preventDefault();
         addTaskList(newForm);
@@ -18,6 +21,7 @@ export default function NewTaskListForm({ addTaskList }) {
             tasks: []
         });
     };
+    
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -32,5 +36,4 @@ export default function NewTaskListForm({ addTaskList }) {
             </form>
         </>
     );
-
 }
