@@ -5,10 +5,9 @@ export default function AuthPage ({ setUser }) {
 
     return (
         <main>
-            <h1>AuthPage</h1>
+            <h1>TaskLab</h1>
             <SignUpForm setUser={ setUser } />
             <LoginForm setUser={ setUser } />
-
         </main>
 
     );
