@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
+import TaskList from "../../components/TaskList/TaskList";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
