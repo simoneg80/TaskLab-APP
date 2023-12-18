@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 export default function UserProfile({ user, setUser }) {
   const [credentials, setCredentials] = useState({
-    name: '',
-    email: ''
+    name: user.name,
+    email: user.email
   });
 
   function handleChange(e, field) {
@@ -17,7 +17,7 @@ export default function UserProfile({ user, setUser }) {
         <label>Name:</label>
         <input
           type="text"
-          value={user.name}
+          value={credentials.name}
           onChange={(e) => handleChange(e, 'name')}
         />
       </div>
@@ -25,7 +25,7 @@ export default function UserProfile({ user, setUser }) {
         <label>Email:</label>
         <input
           type="email"
-          value={user.email}
+          value={credentials.email}
           onChange={(e) => handleChange(e, 'email')}
         />
       </div>
