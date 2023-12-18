@@ -41,3 +41,9 @@ export function getUser() {
 export function checkToken() {
   return usersAPI.checkToken().then((dateStr) => new Date(dateStr));
 }
+
+export async function updateProfile(userData) {
+  const token = await usersAPI.updateProfile(userData);
+  localStorage.setItem('token', token);
+  return getUser();
+}

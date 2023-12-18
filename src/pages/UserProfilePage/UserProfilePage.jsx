@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as usersService from '../../utilities/users-service';
 
 export default function UserProfile({ user, setUser }) {
   const [credentials, setCredentials] = useState({
@@ -8,6 +9,15 @@ export default function UserProfile({ user, setUser }) {
 
   function handleChange(e, field) {
     setCredentials({ ...credentials, [field]: e.target.value });
+  }
+
+  async function handleUpdate() {
+    try {
+      const updatedUser = await usersService.updateProfile(credentials);
+      setUser(updatedUser);
+    } catch (error) {
+      console.error('Failed to update user', error);
+    }
   }
 
   return (
@@ -29,6 +39,7 @@ export default function UserProfile({ user, setUser }) {
           onChange={(e) => handleChange(e, 'email')}
         />
       </div>
+      <button onClick={handleUpdate}>Save Changes</button>
     </div>
   );
 }
