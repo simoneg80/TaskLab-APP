@@ -57,7 +57,7 @@ export default function TaskFolder() {
               <h3>{folder}</h3>
             )}
             <button onClick={() => handleFolderEdit(idx)}>Edit</button>
-            {/* <button onClick={() => handleFolderDelete(idx)}>Delete</button> */}
+            <button onClick={() => handleFolderDelete(idx)}>Delete</button>
             {editIdx === idx && (
               <button onClick={handleFolderUpdate}>Save</button>
             )}
