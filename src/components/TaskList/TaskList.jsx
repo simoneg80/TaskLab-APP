@@ -1,10 +1,9 @@
+import TaskListItem from "../TaskListItem/TaskListItem";
+
 export default function TaskList({ tasks }) {
+    const taskListItems = tasks.map((task, idx) => (
+        <TaskListItem task={task} index={idx} key={task} />
+    ));
+    return <ul>{skillListItems}</ul>
     
-    return (
-        <ul>
-            {tasks.map(task => (
-                <li task={t} index={ids} key={t}/>
-            ))}
-        </ul>
-    );
 }
