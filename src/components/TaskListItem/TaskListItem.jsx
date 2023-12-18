@@ -1,7 +1,9 @@
-export default function TaskListItem({ task, index }) {
+export default function TaskListItem({ task }) {
     return (
-        <li>
-            {task}
-        </li>
+    <>
+        <ul className="content">
+            <li>{task}</li>
+        </ul>
+    </>
     )
 }
