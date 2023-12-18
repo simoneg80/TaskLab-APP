@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/user");
 
@@ -6,7 +6,6 @@ module.exports = {
   create,
   login,
   checkToken,
-
 };
 
 async function create(req, res) {
@@ -28,19 +27,17 @@ async function login(req, res) {
     if (!match) throw new Error();
     const token = createJWT(user);
     res.json(token);
-  } catch(error) {
+  } catch (error) {
     console.log(error);
-    res.status(400).json('Bad Credentials');
+    res.status(400).json("Bad Credentials");
   }
 }
 
 function checkToken(req, res) {
   // req.user will always be there for you when a token is sent
-  console.log('req.user', req.user);
+  console.log("req.user", req.user);
   res.json(req.exp);
 }
-
-
 
 //Helper Functions
 function createJWT(user) {
