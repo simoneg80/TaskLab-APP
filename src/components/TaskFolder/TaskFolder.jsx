@@ -1,36 +1,31 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import TaskList from "../TaskList/TaskList";
-// import "./TaskFolder.css";
+import React, { useState } from "react";
+import * as foldersService from "../../utilities/folders-service";
 
-export default function TaskFolder({ tasks } ) {
-  const [folderName, setFolderName] = useState("");
-  const [folders, setFolders] = useState([]);
-  const [editIdx, setEditIdx] = useState(-1);
-  const [editedName, setEditedName] = useState("");
+
+
+export default function TaskFolder() {
+  const [folderName, setFolderName] = useState([]);
+  const folders = foldersService.getFolders();
+  const editIdx = foldersService.getEditIdx();
+  const editedName = foldersService.getEditedName();
 
   const handleFolderCreation = () => {
     if (folderName.trim() !== "") {
-      setFolders([...folders, folderName]);
+      foldersService.createFolder(folderName);
       setFolderName("");
     }
   };
+
   const handleFolderEdit = (idx) => {
-    setEditIdx(idx);
-    setEditedName(folders[idx]);
+    foldersService.editFolder(idx);
   };
 
   const handleFolderUpdate = () => {
-    const updatedFolders = [...folders];
-    updatedFolders[editIdx] = editedName;
-    setFolders(updatedFolders);
-    setEditIdx(-1);
+    foldersService.updateFolder();
   };
 
   const handleFolderDelete = (idx) => {
-    const updatedFolders = [...folders];
-    updatedFolders.splice(idx, 1);
-    setFolders(updatedFolders);
+    foldersService.deleteFolder(idx);
   };
 
   return (
@@ -47,28 +42,25 @@ export default function TaskFolder({ tasks } ) {
       </div>
 
       <div>
-        {folders.map((folder, idx) => (
-        //   <Link to={`/TaskFolder/${idx}`}>
-            <div key={idx} idx={idx} className="folder-card">
-              {editIdx === idx ? (
-                <input
-                  type="text"
-                  value={editedName}
-                  onChange={(e) => setEditedName(e.target.value)}
-                />
-              ) : (
-                <h3>{folder}</h3>
-              )}
-              <button onClick={() => handleFolderEdit(idx)}>Edit</button>
-              <button onClick={() => handleFolderDelete(idx)}>Delete</button>
-              {editIdx === idx && (
-                <button onClick={handleFolderUpdate}>Save</button>
-              )}
-            </div>
-        //   </Link>
+        {folders && folders.map((folder, idx) => (
+          <div key={idx} idx={idx} className="folder-card">
+            {editIdx === idx ? (
+              <input
+                type="text"
+                value={editedName}
+                onChange={(e) => foldersService.setEditedName(e.target.value)}
+              />
+            ) : (
+              <h3>{folder}</h3>
+            )}
+            <button onClick={() => handleFolderEdit(idx)}>Edit</button>
+            <button onClick={() => handleFolderDelete(idx)}>Delete</button>
+            {editIdx === idx && (
+              <button onClick={handleFolderUpdate}>Save</button>
+            )}
+          </div>
         ))}
       </div>
-      
     </>
   );
 }
