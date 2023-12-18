@@ -10,12 +10,8 @@ router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
 // POST /api/users
 router.post('/', usersCtrl.create);
-router.post('/update', usersCtrl.update);
-router.post('/delete', usersCtrl.delete);
 
 // // POST /api/users/login
 router.post('/login', usersCtrl.login);
-
-
 
 module.exports = router;
