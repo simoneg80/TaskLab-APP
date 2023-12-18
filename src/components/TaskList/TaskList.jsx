@@ -4,6 +4,6 @@ export default function TaskList({ tasks }) {
     const taskListItems = tasks.map((task, idx) => (
         <TaskListItem task={task} index={idx} key={task} />
     ));
-    return <ul>{skillListItems}</ul>
+    return <ul>{taskListItems}</ul>
     
 }
