@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import TaskList from "../TaskList/TaskList";
-import "./TaskFolder.css";  
+// import "./TaskFolder.css";
 
-export default function TaskFolder() {
+export default function TaskFolder( {tasks }) {
   const [folderName, setFolderName] = useState("");
   const [folders, setFolders] = useState([]);
   const [editIdx, setEditIdx] = useState(-1);
   const [editedName, setEditedName] = useState("");
-
-
 
   const handleFolderCreation = () => {
     if (folderName.trim() !== "") {
@@ -36,25 +34,24 @@ export default function TaskFolder() {
   };
 
   return (
-   
-      <>
-        <h1> Task Folder </h1>
-        <div>
-          <input
-            type="text"
-            value={folderName}
-            onChange={(e) => setFolderName(e.target.value)}
-            placeholder="Enter folder name here"
-          />
-          <button onClick={handleFolderCreation}>Create Folder</button>
-        </div>
+    <>
+      <h1> Task Folder </h1>
+      <div>
+        <input
+          type="text"
+          value={folderName}
+          onChange={(e) => setFolderName(e.target.value)}
+          placeholder="Enter folder name here"
+        />
+        <button onClick={handleFolderCreation}>Create Folder</button>
+      </div>
 
-        <div>
-          {folders.map((folder, idx) => (
-             <Link to={`/TaskList/${folder.idx}`}>
+      <div>
+        {folders.map((folder, idx) => (
+          <Link to={`/TaskList/${folder.idx}`}>
             <div key={idx} className="folder-card">
               {editIdx === idx ? (
-                <inputgit 
+                <inputgit
                   type="text"
                   value={editedName}
                   onChange={(e) => setEditedName(e.target.value)}
@@ -69,8 +66,8 @@ export default function TaskFolder() {
               )}
             </div>
           </Link>
-          ))}
-        </div>
-      </>
+        ))}
+      </div>
+    </>
   );
 }
