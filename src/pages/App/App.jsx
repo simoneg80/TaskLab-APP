@@ -7,7 +7,7 @@ import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
 import TaskList from "../../components/TaskList/TaskList";
-import TaskListItem from "../../components/TaskListItem/TaskListItem";
+// import TaskListItem from "../../components/TaskListItem/TaskListItem";
 import NewTaskListForm from "../../components/NewTaskListForm/NewTaskListForm";
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
   ]);
 
 
-  function addTask(newTask) {
+  function addTaskList(newTask) {
     setTasks([...tasks, newTask]);
   }
 
@@ -37,7 +37,7 @@ export default function App() {
           <TaskFolder />
           {/* <TaskList  /> */}
           <TaskList tasks={tasks}  />
-          <NewTaskListForm addTask={addTask} />
+          <NewTaskListForm addTaskList={addTaskList} />
         </>
       ) : (
         <AuthPage setUser={setUser} />
