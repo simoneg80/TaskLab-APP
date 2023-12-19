@@ -1,4 +1,4 @@
-const TaskFolder = require("../../models/folder");
+const Folder = require("../../models/folder");
 
 module.exports = {
   getAllTaskFolders,
@@ -9,9 +9,10 @@ module.exports = {
 
 async function getAllTaskFolders(req, res) {
   try {
-    const taskFolders = await TaskFolder.find().populate("user");
+    const taskFolders = await Folder.find({user: req.user._id}).populate("user").exec();
     res.json(taskFolders);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Internal server error" });
   }
 }
@@ -19,7 +20,7 @@ async function getAllTaskFolders(req, res) {
 async function createTaskFolder(req, res) {
   try {
     const { name } = req.body;
-    const folder = await TaskFolder.create({ ...req.body, name: name , user: req.user._id });
+    const folder = await Folder.create({ ...req.body, name: name , user: req.user._id });
     console.log(folder)
     res.status(201).json(folder);
   } catch (err) {
@@ -32,7 +33,7 @@ async function updateTaskFolder(req, res) {
   try {
     const { folderId } = req.params;
     const { name } = req.body;
-    const updatedTaskFolder = await TaskFolder.findByIdAndUpdate(
+    const updatedTaskFolder = await Folder.findByIdAndUpdate(
       folderId,
       { name },
       { new: true }
@@ -46,7 +47,7 @@ async function updateTaskFolder(req, res) {
 async function deleteTaskFolder(req, res) {
   try {
     const { folderId } = req.params;
-    await TaskFolder.findByIdAndDelete(folderId);
+    await Folder.findByIdAndDelete(folderId);
     res.sendStatus(204);
   } catch (err) {
     res.status(400).json({ error: "Bad request" });

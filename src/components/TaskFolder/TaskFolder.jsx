@@ -12,24 +12,43 @@ export default function TaskFolder() {
   // const folders = foldersService.getFolders();
   // const editIdx = foldersService.getEditIdx();
   // const editedName = foldersService.getEditedName();
+
+  // useEffect(() => {
+  //   const storedFolders = localStorage.getItem("folders");
+  //   if (storedFolders) {
+  //     setFolders(JSON.parse(storedFolders));
+  //   } else {
+  //     fetchData();
+  //   }
+  // }, []);
+
+
   useEffect(() => {
-    const storedFolders = localStorage.getItem("folders");
-    if (storedFolders) {
-      setFolders(JSON.parse(storedFolders));
-    } else {
+    const fetchData = async () => {
+      try {
+        const fetchedFolders = await foldersService.getAllFolders();
+      
+        setFolders(fetchedFolders);
+        
+      } catch (error) {
+        console.error("Error fetching folders:", error);
+      }
+    };
+     
       fetchData();
-    }
+    
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const fetchedFolders = await foldersService.getAllFolders();
-      setFolders(fetchedFolders);
-      localStorage.setItem("folders", JSON.stringify(fetchedFolders));
-    } catch (error) {
-      console.error("Error fetching folders:", error);
-    }
-  };
+
+  // const fetchData = async () => {
+  //   try {
+  //     const fetchedFolders = await foldersService.getAllFolders();
+  //     setFolders(fetchedFolders);
+  //     localStorage.setItem("folders", JSON.stringify(fetchedFolders));
+  //   } catch (error) {
+  //     console.error("Error fetching folders:", error);
+  //   }
+  // };
 
   const handleFolderCreation = async (evt) => {
     if (folderName.trim() !== "") {
@@ -39,6 +58,7 @@ export default function TaskFolder() {
         // const updatedFolders = Array.isArray(folders) ? [...folders, newFolder] : [newFolder];
         setFolders([...folders, newFolder]);
         setFolderName("");
+        
       } catch (error) {
         console.error('Error creating folder:', error);
       }
@@ -87,7 +107,7 @@ export default function TaskFolder() {
 
       <div>
         {folders && folders.map((folder, idx) => (
-          <div key={folder.idx} idx={idx} className="folder-card">
+          <div key={`${folder} + ${idx}`}  idx={idx} className="folder-card">
             {editIndex === idx ? (
               <input
                 type="text"
@@ -95,7 +115,7 @@ export default function TaskFolder() {
                 onChange={(e) => foldersService.setEditedName(e.target.value)}
               />
             ) : (
-              <h3>{folder}</h3>
+              <h3>{folder.name}</h3>
             )}
             <button onClick={() => handleFolderEdit(idx)}>Edit</button>
             <button onClick={() => handleFolderDelete(idx)}>Delete</button>
