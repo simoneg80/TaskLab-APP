@@ -23,21 +23,22 @@ export const createFolder = async (folderName) => {
   }
 };
 
-export const updateFolder = async (folderId, updatedFolderName) => {
+export const editFolder = async (folderName, newFolderName) => {
   try {
-    const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", {
-      name: updatedFolderName,
+    const response = await sendRequest(`${BASE_URL}/${folderName}`, "PUT", {
+      name: newFolderName,
     });
+console.log(response);
     return response;
   } catch (error) {
-    console.error("Error updating folder:", error);
+    console.error("Error editing folder:", error);
     throw error;
   }
 };
 
-export const deleteFolder = async (folderId) => {
+export const deleteFolder = async (folderName) => {
   try {
-    await sendRequest(`${BASE_URL}/${folderId}`, "DELETE");
+    await sendRequest(`${BASE_URL}/${folderName}`, "DELETE");
   } catch (error) {
     console.error("Error deleting folder:", error);
     throw error;
