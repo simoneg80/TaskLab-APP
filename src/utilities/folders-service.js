@@ -31,21 +31,37 @@ export async function createFolder(folderName) {
   }
 }
 
-export function editFolder(idx) {
-  this.editIdx = idx;
-  this.editedName = this.folders[idx];
-}
+// export function editFolder(idx) {
+//   this.editIdx = idx;
+//   this.editedName = this.folders[idx];
+// }
 
-export function updateFolder() {
-  if (this.editIdx !== -1) {
-    this.folders[this.editIdx] = this.editedName;
-    this.editIdx = -1;
+export async function editFolder(idx, newName, folder) {
+  let folders = await getAllFolders();
+  if (Array.isArray(folders) && folders.length > idx) {
+    folders = newName;
+    // Perform any additional folder editing logic here
+    // ...
+    return folder[idx];
+  } else {
+    throw new Error("Invalid folder index");
   }
 }
 
-export function deleteFolder(idx) {
-  this.folders.splice(idx, 1);
+export async function updateFolder() {
+  if (this.editIdx !== -1) {
+    if (Array.isArray(this.folders) && this.folders.length > this.editIdx) {
+      this.folders[this.editIdx] = this.editedName;
+      this.editIdx = -1;
+    } else {
+      throw new Error("Invalid folder index");
+    }
+  }
 }
+
+// export function deleteFolder(idx) {
+//   this.folders.splice(idx, 1);
+// }
 
 export function getFolders() {
   return this.folders;
