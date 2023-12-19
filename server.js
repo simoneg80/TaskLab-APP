@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const folderRouter = require('./routes/api/folders');
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -22,8 +23,10 @@ app.use(require('./config/checkToken'));
 app.use('/api/users', require('./routes/api/users'));
 app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));
-}
-);
+});
+app.use('/api/folders', folderRouter);
+
+
 const port = process.env.PORT || 3001;
 
 app.listen(port, function() {

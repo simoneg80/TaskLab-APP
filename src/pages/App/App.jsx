@@ -7,7 +7,6 @@ import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
 import TaskList from "../../components/TaskList/TaskList";
-// import TaskListItem from "../../components/TaskListItem/TaskListItem";
 import NewTaskListForm from "../../components/NewTaskListForm/NewTaskListForm";
 
 export default function App() {

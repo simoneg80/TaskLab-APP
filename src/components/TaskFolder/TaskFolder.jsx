@@ -11,8 +11,8 @@ export default function TaskFolder() {
 
   const handleFolderCreation = () => {
     if (folderName.trim() !== "") {
-      foldersService.createFolder(folderName);
-      setFolderName("");
+      const newFolder = foldersService.createFolder(folderName);
+      setFolderName(newFolder);
     }
   };
 
