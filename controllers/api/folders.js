@@ -3,8 +3,8 @@ const Folder = require("../../models/folder");
 module.exports = {
   getAllTaskFolders,
   createTaskFolder,
-  updateTaskFolder,
-  deleteTaskFolder,
+  editFolder,
+  deleteFolder,
 };
 
 async function getAllTaskFolders(req, res) {
@@ -29,27 +29,30 @@ async function createTaskFolder(req, res) {
   }
 }
 
-async function updateTaskFolder(req, res) {
+async function editFolder(req, res) {
   try {
-    const { folderId } = req.params;
-    const { name } = req.body;
-    const updatedTaskFolder = await Folder.findByIdAndUpdate(
-      folderId,
-      { name },
-      { new: true }
-    );
-    res.json(updatedTaskFolder);
+    const { name, newName } = req.body;
+    const folder = await Folder.findOneAndUpdate({ name }, { name: newName }, { new: true });
+    if (!folder) {
+      return res.status(404).json({ error: "Folder not found" });
+    }
+    res.status(200).json(folder);
   } catch (err) {
-    res.status(400).json({ error: "Bad request" });
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 }
 
-async function deleteTaskFolder(req, res) {
+async function deleteFolder(req, res) {
   try {
-    const { folderId } = req.params;
-    await Folder.findByIdAndDelete(folderId);
-    res.sendStatus(204);
+    const { name } = req.body;
+    const folder = await Folder.findOneAndDelete({ name });
+    if (!folder) {
+      return res.status(404).json({ error: "Folder not found" });
+    }
+    res.status(200).json({ message: "Folder deleted successfully" });
   } catch (err) {
-    res.status(400).json({ error: "Bad request" });
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 }

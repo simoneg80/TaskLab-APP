@@ -4,17 +4,8 @@ import * as foldersService from "../../utilities/folders-service";
 export default function TaskFolder() {
   const [folderName, setFolderName] = useState([]);
   const [folders, setFolders] = useState([]);
-  const [editIndex, setEditIndex] = useState(-1);
+  const [editIndex, setEditIndex] = useState(null);
   const [editedName, setEditedName] = useState("");
-
-  // useEffect(() => {
-  //   const storedFolders = localStorage.getItem("folders");
-  //   if (storedFolders) {
-  //     setFolders(JSON.parse(storedFolders));
-  //   } else {
-  //     fetchData();
-  //   }
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,16 +21,6 @@ export default function TaskFolder() {
     fetchData();
   }, []);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const fetchedFolders = await foldersService.getAllFolders();
-  //     setFolders(fetchedFolders);
-  //     localStorage.setItem("folders", JSON.stringify(fetchedFolders));
-  //   } catch (error) {
-  //     console.error("Error fetching folders:", error);
-  //   }
-  // };
-
   const handleFolderCreation = async (evt) => {
     if (folderName.trim() !== "") {
       evt.preventDefault();
@@ -54,30 +35,23 @@ export default function TaskFolder() {
     }
   };
 
-  const handleFolderEdit = async (idx) => {
-    try {
-      const updatedfolder = await foldersService.editFolder(idx);
-      setEditIndex(idx);
-      setEditedName(updatedfolder);
-    } catch (error) {
-      console.error("Error editing folder:", error);
-    }
-  };
-
-  const handleFolderUpdate = async () => {
-    try {
-      await foldersService.updateFolder();
-      const updatedFolders = [...folders];
-      updatedFolders[editIndex] = editedName;
-      setFolders(updatedFolders);
-      setEditIndex(-1);
-    } catch (error) {
-      console.error("Error updating folder:", error);
-    }
+  const handleFolderEdit = (idx) => {
+          setEditIndex(idx);
+      setEditedName(folders[idx].name);
   };
 
   const handleFolderDelete = (idx) => {
-    foldersService.deleteFolder(idx);
+    setFolders(folders.filter((_, index) => index !== idx));
+  };
+
+  const handleFolderUpdate = () => {
+    setFolders(
+      folders.map((folder, idx) =>
+        idx === editIndex ? { ...folder, name: editedName } : folder
+      )
+    );
+    setEditIndex(null);
+    setEditedName("");
   };
 
   return (
@@ -96,12 +70,16 @@ export default function TaskFolder() {
       <div>
         {folders &&
           folders.map((folder, idx) => (
-            <div key={`${folder} + ${idx}`} idx={idx} className="folder-card">
+            <div
+              key={`${folder.name} + ${idx}`}
+              idx={idx}
+              className="folder-card"
+            >
               {editIndex === idx ? (
                 <input
                   type="text"
                   value={editedName}
-                  onChange={(e) => foldersService.setEditedName(e.target.value)}
+                  onChange={(e) => setEditedName(e.target.value)}
                 />
               ) : (
                 <h3>{folder.name}</h3>
