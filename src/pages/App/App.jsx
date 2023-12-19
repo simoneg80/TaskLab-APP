@@ -32,7 +32,6 @@ export default function App() {
               path="/profile"
               element={<UserProfilePage user={user} setUser={setUser} />}
             />
-            {/* <Route path="/TaskFolder/:folderId" component={<TaskList />} /> */}
           </Routes>
           <TaskFolder />
           <TaskList tasks={tasks} />
