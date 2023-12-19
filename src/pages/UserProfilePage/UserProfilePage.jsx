@@ -22,7 +22,7 @@ export default function UserProfile({ user, setUser }) {
 
   return (
     <div>
-      <h2>Profile</h2>
+      <h2 className='profiletitle'>Your Folders & Tasks</h2>
       <div>
         <label>Name:</label>
         <input
