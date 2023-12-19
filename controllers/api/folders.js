@@ -1,4 +1,4 @@
-const TaskFolder = require("../models/folder");
+const TaskFolder = require("../../models/folder");
 
 module.exports = {
   getAllTaskFolders,
@@ -19,10 +19,12 @@ async function getAllTaskFolders(req, res) {
 async function createTaskFolder(req, res) {
   try {
     const { name } = req.body;
-    const folder = await TaskFolder.create({ name });
+    const folder = await TaskFolder.create({ ...req.body, name: name , user: req.user._id });
+    console.log(folder)
     res.status(201).json(folder);
   } catch (err) {
     res.status(500).json({ error: "Internal server error" });
+    console.log(req.user._id)
   }
 }
 

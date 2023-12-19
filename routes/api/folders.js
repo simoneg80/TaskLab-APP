@@ -3,15 +3,15 @@ const router = express.Router();
 const foldersCtrl = require("../../controllers/api/folders");
 
 // GET all folders
-router.get("/folders", foldersCtrl.getAllTaskFolders);
+router.get("/", foldersCtrl.getAllTaskFolders);
 
 // POST create folder
-router.post("/folders", foldersCtrl.createTaskFolder);
+router.post("/", foldersCtrl.createTaskFolder);
 
 // PUT update folder
-router.put("/folders/:folderId", foldersCtrl.updateTaskFolder);
+router.put("/:folderId", foldersCtrl.updateTaskFolder);
 
 // DELETE delete folder
-router.delete("/folders/:folderId", foldersCtrl.deleteTaskFolder);
+router.delete("/:folderId", foldersCtrl.deleteTaskFolder);
 
 module.exports = router;

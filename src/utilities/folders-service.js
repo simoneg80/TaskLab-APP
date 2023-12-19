@@ -8,9 +8,16 @@ export function getAllFolders() {
   });
 }
 
-export function createFolder(folderName) {
+export async function createFolder(folderName) {
   if (folderName.trim() !== "") {
-    folders.push(folderName);
+    try {
+      await foldersAPI.createFolder(folderName);
+      folders.push(folderName);
+      console.log(folderName);
+      return folderName;
+    } catch (error) {
+      console.error("Error creating folder:", error);
+    }
   }
 }
 
