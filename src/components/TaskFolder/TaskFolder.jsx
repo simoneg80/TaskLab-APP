@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import * as foldersService from "../../utilities/folders-service";
 
-
-
 export default function TaskFolder() {
   const [folderName, setFolderName] = useState([]);
   const [folders, setFolders] = useState([]);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedName, setEditedName] = useState("");
-
-  // const folders = foldersService.getFolders();
-  // const editIdx = foldersService.getEditIdx();
-  // const editedName = foldersService.getEditedName();
 
   // useEffect(() => {
   //   const storedFolders = localStorage.getItem("folders");
@@ -22,23 +16,19 @@ export default function TaskFolder() {
   //   }
   // }, []);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const fetchedFolders = await foldersService.getAllFolders();
-      
+
         setFolders(fetchedFolders);
-        
       } catch (error) {
         console.error("Error fetching folders:", error);
       }
     };
-     
-      fetchData();
-    
-  }, []);
 
+    fetchData();
+  }, []);
 
   // const fetchData = async () => {
   //   try {
@@ -58,33 +48,31 @@ export default function TaskFolder() {
         // const updatedFolders = Array.isArray(folders) ? [...folders, newFolder] : [newFolder];
         setFolders([...folders, newFolder]);
         setFolderName("");
-        
       } catch (error) {
-        console.error('Error creating folder:', error);
+        console.error("Error creating folder:", error);
       }
     }
   };
 
   const handleFolderEdit = async (idx) => {
     try {
-    const updatedfolder = await foldersService.editFolder(idx);
-    setEditIndex(idx);
-    setEditedName( updatedfolder);
+      const updatedfolder = await foldersService.editFolder(idx);
+      setEditIndex(idx);
+      setEditedName(updatedfolder);
     } catch (error) {
-      console.error('Error editing folder:', error);
+      console.error("Error editing folder:", error);
     }
   };
 
   const handleFolderUpdate = async () => {
     try {
-    await foldersService.updateFolder();
-    const updatedFolders = [...folders];
-    updatedFolders[editIndex] = editedName;
-    setFolders(updatedFolders);
-    setEditIndex(-1);
-
+      await foldersService.updateFolder();
+      const updatedFolders = [...folders];
+      updatedFolders[editIndex] = editedName;
+      setFolders(updatedFolders);
+      setEditIndex(-1);
     } catch (error) {
-      console.error('Error updating folder:', error);
+      console.error("Error updating folder:", error);
     }
   };
 
@@ -106,24 +94,25 @@ export default function TaskFolder() {
       </div>
 
       <div>
-        {folders && folders.map((folder, idx) => (
-          <div key={`${folder} + ${idx}`}  idx={idx} className="folder-card">
-            {editIndex === idx ? (
-              <input
-                type="text"
-                value={editedName}
-                onChange={(e) => foldersService.setEditedName(e.target.value)}
-              />
-            ) : (
-              <h3>{folder.name}</h3>
-            )}
-            <button onClick={() => handleFolderEdit(idx)}>Edit</button>
-            <button onClick={() => handleFolderDelete(idx)}>Delete</button>
-            {editIndex === idx && (
-              <button onClick={handleFolderUpdate}>Save</button>
-            )}
-          </div>
-        ))}
+        {folders &&
+          folders.map((folder, idx) => (
+            <div key={`${folder} + ${idx}`} idx={idx} className="folder-card">
+              {editIndex === idx ? (
+                <input
+                  type="text"
+                  value={editedName}
+                  onChange={(e) => foldersService.setEditedName(e.target.value)}
+                />
+              ) : (
+                <h3>{folder.name}</h3>
+              )}
+              <button onClick={() => handleFolderEdit(idx)}>Edit</button>
+              <button onClick={() => handleFolderDelete(idx)}>Delete</button>
+              {editIndex === idx && (
+                <button onClick={handleFolderUpdate}>Save</button>
+              )}
+            </div>
+          ))}
       </div>
     </>
   );
