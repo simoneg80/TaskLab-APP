@@ -21,10 +21,10 @@ app.use(require('./config/checkToken'));
 
 // Define api routes below
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/folders', folderRouter);
 app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));
 });
-app.use('/api/folders', folderRouter);
 
 
 const port = process.env.PORT || 3001;

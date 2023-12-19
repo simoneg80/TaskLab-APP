@@ -3,11 +3,10 @@ const BASE_URL = "/api/folders";
 
 export const getAllFolders = async () => {
   try {
-    const response = await sendRequest(`${BASE_URL}/`, "GET");
+    const response = await sendRequest(`${BASE_URL}`, "GET");
     return response;
   } catch (error) {
     console.error("Error fetching folders:", error);
-    throw error;
   }
 };
 
