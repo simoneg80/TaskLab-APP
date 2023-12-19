@@ -31,8 +31,8 @@ async function createTaskFolder(req, res) {
 
 async function editFolder(req, res) {
   try {
-    const { name, newName } = req.body;
-    const folder = await Folder.findOneAndUpdate({ name }, { name: newName }, { new: true });
+    const { newName } = req.body;
+    const folder = await Folder.findOneAndUpdate({ id: req.params.id }, { name: newName }, { new: true });
     if (!folder) {
       return res.status(404).json({ error: "Folder not found" });
     }
@@ -45,8 +45,7 @@ async function editFolder(req, res) {
 
 async function deleteFolder(req, res) {
   try {
-    const { name } = req.body;
-    const folder = await Folder.findOneAndDelete({ name });
+    const folder = await Folder.findByIdAndDelete( req.params.id );
     if (!folder) {
       return res.status(404).json({ error: "Folder not found" });
     }

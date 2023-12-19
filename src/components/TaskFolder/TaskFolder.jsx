@@ -40,7 +40,9 @@ export default function TaskFolder() {
       setEditedName(folders[idx].name);
   };
 
-  const handleFolderDelete = (idx) => {
+  const handleFolderDelete = async (idx) => {
+    const res = await foldersService.deleteFolder(folders[idx]._id);
+    console.log(res.data);
     setFolders(folders.filter((_, index) => index !== idx));
   };
 

@@ -1,3 +1,4 @@
+import { response } from "express";
 import * as foldersAPI from "./folders-api";
 
 let folders = [];
@@ -29,23 +30,19 @@ export function getFolders() {
   return this.folders;
 }
 
-export async function editFolder(oldFolderName, newFolderName) {
+export async function editFolder(folderId, newFolderName) {
   try {
-    const response = await foldersAPI.editFolder(oldFolderName, newFolderName);
-    const index = folders.findIndex(folder => folder.name === oldFolderName);
-    if (index !== -1) {
-      folders[index] = response;
-    }
+    const response = await foldersAPI.editFolder(folderId, newFolderName);
     return response;
   } catch (error) {
     console.error("Error editing folder:", error);
   }
 }
 
-export async function deleteFolder(folderName) {
+export async function deleteFolder(folderId) {
   try {
-    await foldersAPI.deleteFolder(folderName);
-    folders = folders.filter(folder => folder.name !== folderName);
+    const response = await foldersAPI.deleteFolder(folderId);
+    console.log(response);
   } catch (error) {
     console.error("Error deleting folder:", error);
 }

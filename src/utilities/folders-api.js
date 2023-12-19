@@ -23,9 +23,9 @@ export const createFolder = async (folderName) => {
   }
 };
 
-export const editFolder = async (folderName, newFolderName) => {
+export const editFolder = async ( folderId, newFolderName) => {
   try {
-    const response = await sendRequest(`${BASE_URL}/${folderName}`, "PUT", {
+    const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", {
       name: newFolderName,
     });
 console.log(response);
@@ -36,9 +36,9 @@ console.log(response);
   }
 };
 
-export const deleteFolder = async (folderName) => {
+export const deleteFolder = async (folderId) => {
   try {
-    await sendRequest(`${BASE_URL}/${folderName}`, "DELETE");
+    await sendRequest(`${BASE_URL}/${folderId}`, "DELETE");
   } catch (error) {
     console.error("Error deleting folder:", error);
     throw error;
