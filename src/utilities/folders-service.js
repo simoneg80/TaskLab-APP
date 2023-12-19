@@ -2,11 +2,21 @@ import * as foldersAPI from "./folders-api";
 
 let folders = [];
 
-export function getAllFolders() {
-  foldersAPI.getAllFolders().then((response) => {
-    folders = response;
-  });
+export async function getAllFolders() {
+  try {
+    const response = await foldersAPI.getAllFolders();
+    return folders = response;
+  } catch (error) {
+    console.error("Error getting folders:", error);
+    return [];
+  }
 }
+
+// export function getAllFolders() {
+//   foldersAPI.getAllFolders().then((response) => {
+//     folders = response;
+//   });
+// }
 
 export async function createFolder(folderName) {
   if (folderName.trim() !== "") {
