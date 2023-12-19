@@ -9,10 +9,16 @@ export default function TaskFolder() {
   const editIdx = foldersService.getEditIdx();
   const editedName = foldersService.getEditedName();
 
-  const handleFolderCreation = () => {
+
+  const handleFolderCreation = async () => {
     if (folderName.trim() !== "") {
-      const newFolder = foldersService.createFolder(folderName);
-      setFolderName(newFolder);
+      try {
+        const newFolder = await foldersService.createFolder(folderName);
+        const updatedFolders = Array.isArray(folders) ? [...folders, newFolder] : [newFolder];
+        setFolderName(updatedFolders);
+      } catch (error) {
+        console.error('Error creating folder:', error);
+      }
     }
   };
 
