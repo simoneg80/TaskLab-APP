@@ -30,7 +30,7 @@ export default class SignUpForm extends Component {
 
           this.props.setUser(user);
         } catch {
-          this.setState({ error: 'Sign Up Failed - Try Again' });
+          this.setState({ error: 'oops, try that again!' });
         }
     };
     //  every class based component needs to have a render() function

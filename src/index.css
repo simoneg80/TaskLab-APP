@@ -37,7 +37,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: #292C33
+  ;
   padding: 2vmin;
   height: 100vh;
 }
@@ -95,22 +96,29 @@ code {
 }
 
 .form-container {
-  padding: 3vmin;
-  background-color: var(--tan-1);
+  padding: 2vmin;
+  background-color: #b5c99a;
   border: 0.1vmin solid var(--tan-3);
   border-radius: 1vmin;
+  width: 47vmin;
+  margin: 0 auto;
+
 }
 
 p.error-message {
-  color: var(--orange);
+  color: #a2d2ff;
   text-align: center;
 }
 
 form {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
-  color: var(--text-light);
+  gap: 1vmin;
+  color: #292C33;
+  font-family: 'caveat', cursive;
+  font-weight: bold;
+  font-size: 7vmin;
+;
 }
 
 label {
@@ -134,11 +142,12 @@ input:focus {
 }
 
 button,
-a.button {
+a.button {;
   margin: 1vmin;
   padding: 1vmin;
-  color: var(--white);
-  background-color: var(--orange);
+  color: #292C33; 
+  background-color: #ff85a1;
+  font-family: 'caveat', cursive;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
@@ -147,6 +156,7 @@ a.button {
   border-radius: 0.5vmin;
   outline: none;
   cursor: pointer;
+  width: 11vmin;
 }
 
 button.btn-sm {
@@ -162,10 +172,20 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: #ffb3c6;
+  font-family: 'caveat', cursive;
+  font-weight: 
 }
 
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+}
+
+.Logintitle {
+  font-size: 9vmin;
+  font-weight: bold;
+  color: #a2d2ff;
+  font-family: 'Shadows Into Light', cursive;
+  
 }
