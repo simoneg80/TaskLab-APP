@@ -5,7 +5,8 @@ import * as foldersService from "../../utilities/folders-service";
 
 export default function TaskFolder() {
   const [folderName, setFolderName] = useState([]);
-  const folders = foldersService.getFolders();
+  const [folders, setFolders] = useState([]);
+  // const folders = foldersService.getFolders();
   const editIdx = foldersService.getEditIdx();
   const editedName = foldersService.getEditedName();
 
@@ -14,8 +15,9 @@ export default function TaskFolder() {
     if (folderName.trim() !== "") {
       try {
         const newFolder = await foldersService.createFolder(folderName);
-        const updatedFolders = Array.isArray(folders) ? [...folders, newFolder] : [newFolder];
-        setFolderName(updatedFolders);
+        // const updatedFolders = Array.isArray(folders) ? [...folders, newFolder] : [newFolder];
+        setFolders([...folders, folderName]);
+        setFolderName("");
       } catch (error) {
         console.error('Error creating folder:', error);
       }
