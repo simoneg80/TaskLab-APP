@@ -12,26 +12,30 @@ export async function getAllFolders() {
   }
 }
 
-export async function createFolder(folderName) {
-  if (folderName.trim() !== "") {
-    try {
-      await foldersAPI.createFolder(folderName);
-      folders.push(folderName);
-      console.log(folderName);
-      return folderName;
-    } catch (error) {
-      console.error("Error creating folder:", error);
-    }
+export async function createFolder(folderName, folderContent) {
+  // if (folderName.trim() !== "") {
+  try {
+  
+    const createdFolder = await foldersAPI.createFolder(folderName, folderContent);
+    // folders.push(folder);
+    // folders.push(folderName);
+    // folders.push(folderContent);
+    console.log(createdFolder);
+    return createdFolder;
+  } catch (error) {
+    console.error("Error creating folder:", error);
   }
+  // }
 }
 
 export function getFolders() {
   return this.folders;
 }
 
-export async function editFolder(folderId, newFolderName) {
+export async function editFolder(folderId, newFolder) {
   try {
-    const response = await foldersAPI.editFolder(folderId, newFolderName);
+
+    const response = await foldersAPI.editFolder(folderId, newFolder);
     return response;
   } catch (error) {
     console.error("Error editing folder:", error);

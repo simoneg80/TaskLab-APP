@@ -11,10 +11,11 @@ export const getAllFolders = async () => {
   }
 };
 
-export const createFolder = async (folderName) => {
+export const createFolder = async (folderName, folderContent) => {
   try {
     const response = await sendRequest(`${BASE_URL}`, "POST", {
       name: folderName,
+      content: folderContent,
     });
     console.log(response);
     return response;
@@ -24,10 +25,10 @@ export const createFolder = async (folderName) => {
   }
 };
 
-export const editFolder = async ( folderId, newFolderName) => {
-  console.log(folderId, newFolderName);
+export const editFolder = async ( folderId, newFolder ) => {
+  console.log(folderId, newFolder);
   try {
-    const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", newFolderName);
+    const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", newFolder);
 
     console.log(response);
     return response;
