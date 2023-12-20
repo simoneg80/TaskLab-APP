@@ -1,34 +1,42 @@
 .navbody {
-    background-color:#b5c99a;
-    text-decoration: none;
-    font-family: 'marker felt', cursive;
-    font-size: 1.5rem;
-    text-align: center;
-    line-height: 1.5;
-    margin: 0;
+    background-color:#3D405B;
     padding: 100px;
-    color: #292C33;
     width: 100%;
-    height: %;
+    height: 9%;
     overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
     transition: all 0.3s ease-in-out;
     padding: 0.3rem 0.8rem;
-    /* border-radius: 0.8rem; */
-    text-: none;
+    text-decoration: none;
 }
 
 .navseparator {
-    color: black
+    color: #E07A5F;
 }
 
 a:link {
     text-decoration: none; 
+    color: #E07A5F;
 }
 
+a:visited {
+    text-decoration: none;
+    color: #E07A5F;
+}
 
+.navcontent {
+    float: right;
+    margin-right: 30px;
+    margin: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 23px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #E07A5F;
+    font-weight: bold;
+}
 
 
 

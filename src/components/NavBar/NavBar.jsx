@@ -11,8 +11,8 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <div className="navbody">
-      <nav>
-        <Link to="/profile">Welcome, {user.name}</Link>
+      <nav className="navcontent">
+      <Link to="/profile">Profile</Link>
         <span className="navseparator">
         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       </span>
