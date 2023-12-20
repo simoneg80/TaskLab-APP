@@ -13,7 +13,7 @@ code {
 }
 
 /* CSS Custom Properties */
-:root {
+/* :root {
   --white: #ffffff;
   --tan-1: #fbf9f6;
   --tan-2: #e7e2dd;
@@ -22,7 +22,7 @@ code {
   --orange: #f67f00;
   --text-light: #968c84;
   --text-dark: #615954;
-}
+} */
 
 *,
 *:before,
@@ -85,9 +85,7 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* background-color: var(--tan-1); */
   color: var(--text-dark);
-  /* border: 0.1vmin solid var(--tan-3); */
   border-radius: 1vmin;
   padding: 0.6vmin;
   text-align: center;
@@ -96,15 +94,15 @@ code {
 
 .form-container {
   padding: 2vmin;
-  background-color: #b5c99a;
+  background-color: #81B29A;
   border: 0.1vmin solid var(--tan-3);
-  border-radius: 1vmin;
+  border-radius: .5vmin;
   width: 47vmin;
   margin: 0 auto;
 }
 
 p.error-message {
-  color: #f67f00;
+  color: #E07A5F;
   text-align: center;
 }
 
@@ -112,16 +110,19 @@ form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1vmin;
-  color: #292c33;
-  font-family: "caveat", cursive;
-  font-weight: bold;
+  color: #3D405B;
+  font-family: "marker felt", cursive;
+  font-style: italic bold;
+  font-weight: 30;
   font-size: 7vmin;
+  
 }
 
 label {
   font-size: 2vmin;
   display: flex;
   align-items: center;
+ 
 }
 
 input {
@@ -132,6 +133,8 @@ input {
   color: var(--text-dark);
   background-image: none !important; /* prevent lastpass */
   outline: none;
+  background-color: #F4F1DE;
+  margin-right: 5px;
 }
 
 input:focus {
@@ -142,8 +145,7 @@ button,
 a.button {
   margin: 1vmin;
   padding: 1vmin;
-  color: #292c33;
-  /* background-color: #ff85a1; */
+  color: #3D405B;
   font-family: "caveat", cursive;
   font-size: 2vmin;
   font-weight: bold;
@@ -169,9 +171,10 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: #ff8552;
-  font-family: "caveat", cursive;
-  font-weight: ;
+  background-color: #E07A5F;
+  font-family: "marker felt", cursive;
+  font-style: italic;
+  font-weight: 900;
 }
 
 button[type="submit"] {
