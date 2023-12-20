@@ -26,7 +26,6 @@ export default function TaskFolder() {
       evt.preventDefault();
       try {
         const newFolder = await foldersService.createFolder(folderName);
-        // const updatedFolders = Array.isArray(folders) ? [...folders, newFolder] : [newFolder];
         setFolders([...folders, newFolder]);
         setFolderName("");
       } catch (error) {
@@ -35,24 +34,23 @@ export default function TaskFolder() {
     }
   };
 
-  const handleFolderEdit = (idx) => {
-          setEditIndex(idx);
-      setEditedName(folders[idx].name);
-  };
-
   const handleFolderDelete = async (idx) => {
     const res = await foldersService.deleteFolder(folders[idx]._id);
     setFolders(folders.filter((_, index) => index !== idx));
   };
 
-  const handleFolderUpdate = async (folder) => {
-    console.log(editedName, folder._id)
-    await foldersService.editFolder(folder._id, editedName)
-    const folders = await foldersService.getAllFolders();
-    setFolders(folders); 
-    
-    // setEditIndex(null);
-    // setEditedName("");
+  const handleFolderEdit = async (idx) => {
+    if (editedName === "") {
+      setEditIndex(idx);
+      setEditedName(folders[idx].name);
+    } else {
+      await foldersService.editFolder(folders[idx]._id, { name: editedName });
+      const updatedFolders = await foldersService.getAllFolders();
+      setFolders(updatedFolders);
+
+      setEditIndex(null);
+      setEditedName("");
+    }
   };
 
   return (
@@ -87,9 +85,6 @@ export default function TaskFolder() {
               )}
               <button onClick={() => handleFolderEdit(idx)}>Edit</button>
               <button onClick={() => handleFolderDelete(idx)}>Delete</button>
-              {editIndex === idx && (
-                <button onClick={() => handleFolderUpdate(folder)}>Save</button>
-              )}
             </div>
           ))}
       </div>
