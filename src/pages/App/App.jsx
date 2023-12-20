@@ -29,8 +29,8 @@ export default function App() {
             />
           </Routes>
           <TaskFolder />
-          <TaskList tasks={tasks} />
-          <NewTaskListForm addTaskList={addTaskList} />
+          {/* <TaskList tasks={tasks} />
+          <NewTaskListForm addTaskList={addTaskList} /> */}
         </>
       ) : (
         <AuthPage setUser={setUser} />
