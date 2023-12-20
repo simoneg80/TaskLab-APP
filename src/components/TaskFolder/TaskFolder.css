@@ -1,40 +1,36 @@
 .taskfolder {
-    margin: 100px;
+  margin: 100px;
 }
 
 .newfolderbutton {
-    border: 2.5px solid;
-    background-color: #ff8552;
-    
+  border: 2.5px solid;
+  background-color: #ff8552;
 }
 
 .taskfoldertitle {
-    font-family: 'caveat', cursive;
-    font-size: 4rem;
-    width: 100%;
-    border: ;
-    transition: all 0.3s ease-in-out;
-    padding: 0.3rem 0.8rem;
-    
+  font-family: "caveat", cursive;
+  font-size: 4rem;
+  width: 100%;
+  border: 2.5px solid;
+  transition: all 0.3s ease-in-out;
+  padding: 0.3rem 0.8rem;
 }
 
-.folder-card{
-    border: 2.5px solid;
-    background-color: #ff8552;
-    transition: all 0.3s ease-in-out;
-    padding: 0.3rem 0.8rem;
-    font-family: 'caveat', cursive;
-    font-size: 1.5rem;
-    text-align: center;
-    margin: 10px;
-    ;
+.folder-card {
+  border: 2.5px solid;
+  background-color: #81b29a;
+  transition: all 0.3s ease-in-out;
+  padding: 0.3rem 0.8rem;
+  font-family: "caveat", cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 10px;
 }
 
-.folder-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 100px;
+.folder-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
 }
-

@@ -11,6 +11,7 @@ export default function TaskFolder() {
   const [editedContent, setEditedContent] = useState("");
   const [folderDueDate, setFolderDueDate] = useState("");
   const [editedFolderDate, setEditedFolderDate] = useState("");
+  const [colorPicker, setColorPicker] = useState("#81B29A");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,11 +58,13 @@ export default function TaskFolder() {
       setEditedName(folders[idx].name);
       setEditedContent(folders[idx].content);
       setEditedFolderDate(folders[idx].dueDate);
+      setColorPicker(folders[idx].color);
     } else {
       await foldersService.editFolder(folders[idx]._id, {
         name: editedName,
         content: editedContent,
         dueDate: editedFolderDate,
+        color: colorPicker,
       });
       const updatedFolders = await foldersService.getAllFolders();
       setFolders(updatedFolders);
@@ -104,6 +107,7 @@ export default function TaskFolder() {
               key={`${folder.name} + ${idx}`}
               idx={idx}
               className="folder-card"
+              style={{backgroundColor: folder.color }}
             >
               {editIndex === idx ? (
                 <>
@@ -122,6 +126,16 @@ export default function TaskFolder() {
                     value={editedFolderDate}
                     onChange={(e) => setEditedFolderDate(e.target.value)}
                   />
+                    <select
+                    className="color-picker"
+                    value={colorPicker}
+                    onChange={(e) => setColorPicker(e.target.value)}
+                  >
+                    <option value="#81B29A">Green</option>
+                    <option value="#F2CC8F">Yellow</option>
+                    <option value="#F3A867">Orange</option>
+                    <option value="#F96464">Red</option>
+                  </select>
                 </>
               ) : (
                 <>

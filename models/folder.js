@@ -6,18 +6,20 @@ const folderSchema = new mongoose.Schema({
     required: true,
   },
   content: {
-    type: String, 
-  
+    type: String,
   },
   dueDate: {
     type: Date,
-   
   },
-  
+  color: {
+    type: String,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
   },
+
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
