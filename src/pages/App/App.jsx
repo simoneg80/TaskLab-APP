@@ -9,14 +9,9 @@ import TaskFolder from "../../components/TaskFolder/TaskFolder";
 import TaskList from "../../components/TaskList/TaskList";
 import NewTaskListForm from "../../components/NewTaskListForm/NewTaskListForm";
 
-
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [tasks, setTasks] = useState([
-    // { name: "task1" },
-    // { name: "task2" },
-    // { name: "task3" },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   function addTaskList(newTask) {
     setTasks([...tasks, newTask]);
@@ -32,7 +27,6 @@ export default function App() {
               path="/profile"
               element={<UserProfilePage user={user} setUser={setUser} />}
             />
-            {/* <Route path="/TaskFolder/:folderId" component={<TaskList />} /> */}
           </Routes>
           <TaskFolder />
           <TaskList tasks={tasks} />
