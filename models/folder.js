@@ -5,6 +5,11 @@ const folderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  content: {
+    type: String, 
+    default: "Enter text here", 
+  },
+  
   createdAt: {
     type: Date,
     default: Date.now,

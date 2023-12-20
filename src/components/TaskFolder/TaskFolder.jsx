@@ -7,6 +7,9 @@ export default function TaskFolder() {
   const [folders, setFolders] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editedName, setEditedName] = useState("");
+  const [folderContent, setFolderContent] = useState("");
+  const [editContentIndex, setEditContentIndex] = useState(null);
+  const [editedContent, setEditedContent] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,8 +47,9 @@ export default function TaskFolder() {
     if (editedName === "") {
       setEditIndex(idx);
       setEditedName(folders[idx].name);
+      setFolderContent(folders[idx].content);
     } else {
-      await foldersService.editFolder(folders[idx]._id, { name: editedName });
+      await foldersService.editFolder(folders[idx]._id, { name: editedName, content: editedContent });
       const updatedFolders = await foldersService.getAllFolders();
       setFolders(updatedFolders);
 
@@ -76,15 +80,29 @@ export default function TaskFolder() {
               className="folder-card"
             >
               {editIndex === idx ? (
+                <>
                 <input
                   type="text"
                   value={editedName}
                   onChange={(e) => setEditedName(e.target.value)}
                 />
+                <textarea
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+                placeholder="Enter folder content here"
+              />
+              </>
               ) : (
+                <>
                 <h3>{folder.name}</h3>
+                <p>{folder.content}</p>
+                </>
               )}
-              <button onClick={() => handleFolderEdit(idx)}>Edit</button>
+             {editIndex === idx ? (
+                <button onClick={() => handleFolderEdit(idx)}>Save</button>
+              ) : (
+                <button onClick={() => handleFolderEdit(idx)}>Edit</button>
+              )}
               <button onClick={() => handleFolderDelete(idx)}>Delete</button>
             </div>
           ))}
