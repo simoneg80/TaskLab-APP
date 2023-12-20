@@ -1,4 +1,3 @@
-import { response } from "express";
 import * as foldersAPI from "./folders-api";
 
 let folders = [];
@@ -6,7 +5,7 @@ let folders = [];
 export async function getAllFolders() {
   try {
     const response = await foldersAPI.getAllFolders();
-    return folders = response;
+    return (folders = response);
   } catch (error) {
     console.error("Error getting folders:", error);
     return [];
@@ -45,5 +44,5 @@ export async function deleteFolder(folderId) {
     console.log(response);
   } catch (error) {
     console.error("Error deleting folder:", error);
-}
+  }
 }

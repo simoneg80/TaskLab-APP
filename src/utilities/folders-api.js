@@ -25,9 +25,7 @@ export const createFolder = async (folderName) => {
 
 export const editFolder = async ( folderId, newFolderName) => {
   try {
-    const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", {
-      name: newFolderName,
-    });
+    const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", newFolderName);
 console.log(response);
     return response;
   } catch (error) {

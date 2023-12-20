@@ -42,16 +42,14 @@ export default function TaskFolder() {
 
   const handleFolderDelete = async (idx) => {
     const res = await foldersService.deleteFolder(folders[idx]._id);
-    console.log(res.data);
     setFolders(folders.filter((_, index) => index !== idx));
   };
 
-  const handleFolderUpdate = () => {
-    setFolders(
-      folders.map((folder, idx) =>
-        idx === editIndex ? { ...folder, name: editedName } : folder
-      )
-    );
+  const handleFolderUpdate = async (folder) => {
+    await foldersService.editFolder(folder._id, editedName)
+    const folders = await foldersService.getAllFolders();
+    setFolders(folders); 
+    
     setEditIndex(null);
     setEditedName("");
   };
@@ -89,7 +87,7 @@ export default function TaskFolder() {
               <button onClick={() => handleFolderEdit(idx)}>Edit</button>
               <button onClick={() => handleFolderDelete(idx)}>Delete</button>
               {editIndex === idx && (
-                <button onClick={handleFolderUpdate}>Save</button>
+                <button onClick={() => handleFolderUpdate(folder)}>Save</button>
               )}
             </div>
           ))}
