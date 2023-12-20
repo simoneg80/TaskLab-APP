@@ -22,11 +22,12 @@ async function getAllTaskFolders(req, res) {
 async function createTaskFolder(req, res) {
   console.log(req.body);
   try {
-    const { name, content } = req.body;
+    const { name, content, dueDate } = req.body;
     const folder = await Folder.create({
       ...req.body,
       name: name,
       content: content,
+      dueDate: dueDate,
       user: req.user._id,
     });
     console.log(folder);
@@ -41,7 +42,7 @@ async function editFolder(req, res) {
   try {
     const folder = await Folder.findOneAndUpdate(
       { _id: req.params.id },
-      { name: req.body.name, content: req.body.content },
+      { name: req.body.name, content: req.body.content, dueDate: req.body.dueDate },
       { new: true }
     );
     if (!folder) {

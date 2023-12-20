@@ -11,11 +11,13 @@ export const getAllFolders = async () => {
   }
 };
 
-export const createFolder = async (folderName, folderContent) => {
+export const createFolder = async (folderName, folderContent, folderDueDate) => {
   try {
     const response = await sendRequest(`${BASE_URL}`, "POST", {
       name: folderName,
       content: folderContent,
+      dueDate: folderDueDate,
+
     });
     console.log(response);
     return response;

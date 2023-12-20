@@ -9,6 +9,10 @@ const folderSchema = new mongoose.Schema({
     type: String, 
   
   },
+  dueDate: {
+    type: Date,
+   
+  },
   
   createdAt: {
     type: Date,

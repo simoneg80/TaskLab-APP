@@ -12,11 +12,11 @@ export async function getAllFolders() {
   }
 }
 
-export async function createFolder(folderName, folderContent) {
+export async function createFolder(folderName, folderContent, folderDueDate) {
   // if (folderName.trim() !== "") {
   try {
   
-    const createdFolder = await foldersAPI.createFolder(folderName, folderContent);
+    const createdFolder = await foldersAPI.createFolder(folderName, folderContent, folderDueDate);
     // folders.push(folder);
     // folders.push(folderName);
     // folders.push(folderContent);
