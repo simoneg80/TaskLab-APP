@@ -46,12 +46,13 @@ export default function TaskFolder() {
   };
 
   const handleFolderUpdate = async (folder) => {
+    console.log(editedName, folder._id)
     await foldersService.editFolder(folder._id, editedName)
     const folders = await foldersService.getAllFolders();
     setFolders(folders); 
     
-    setEditIndex(null);
-    setEditedName("");
+    // setEditIndex(null);
+    // setEditedName("");
   };
 
   return (
