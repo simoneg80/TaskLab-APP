@@ -88,7 +88,7 @@ code {
   align-items: center;
   /* background-color: var(--tan-1); */
   color: var(--text-dark);
-  border: 0.1vmin solid var(--tan-3);
+  /* border: 0.1vmin solid var(--tan-3); */
   border-radius: 1vmin;
   padding: 0.6vmin;
   text-align: center;
@@ -106,7 +106,7 @@ code {
 }
 
 p.error-message {
-  color: #a2d2ff;
+  color:#f67f00;
   text-align: center;
 }
 
