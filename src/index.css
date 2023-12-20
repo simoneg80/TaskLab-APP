@@ -37,7 +37,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #292C33
+  background-color: #a3cef1;
   ;
   padding: 2vmin;
   height: 100vh;
@@ -86,7 +86,7 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--tan-1);
+  /* background-color: var(--tan-1); */
   color: var(--text-dark);
   border: 0.1vmin solid var(--tan-3);
   border-radius: 1vmin;
@@ -172,7 +172,7 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: #ffb3c6;
+  background-color: #ff8552;
   font-family: 'caveat', cursive;
   font-weight: 
 }
@@ -185,7 +185,7 @@ button[type="submit"] {
 .Logintitle {
   font-size: 9vmin;
   font-weight: bold;
-  color: #a2d2ff;
+  color:#ff8552;
   font-family: 'Shadows Into Light', cursive;
   
 }
