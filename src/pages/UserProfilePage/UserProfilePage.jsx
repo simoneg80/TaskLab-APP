@@ -21,8 +21,8 @@ export default function UserProfile({ user, setUser }) {
   }
 
   return (
-    <div>
-      <h2 className='profiletitle'>Your Folders & Tasks</h2>
+    <div className="profilepage">
+      <h2 className='profiletitle'>{credentials.name}'s Account Information</h2>
       <div>
         <label>Name:</label>
         <input

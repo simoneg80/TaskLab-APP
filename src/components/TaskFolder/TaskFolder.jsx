@@ -71,7 +71,7 @@ export default function TaskFolder() {
         <button className="newfolderbutton" onClick={handleFolderCreation}>+ folder</button>
       </div>
 
-      <div>
+      <div className="folder-container">
         {folders &&
           folders.map((folder, idx) => (
             <div
