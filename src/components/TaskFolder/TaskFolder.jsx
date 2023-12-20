@@ -26,16 +26,18 @@ export default function TaskFolder() {
   }, []);
 
   const handleFolderCreation = async (evt) => {
-    if (folderName.trim() !== "") {
+    // if (folderName.trim() !== "") {
       evt.preventDefault();
       try {
-        const newFolder = await foldersService.createFolder(folderName);
+        
+        const newFolder = await foldersService.createFolder(folderName, folderContent);
         setFolders([...folders, newFolder]);
         setFolderName("");
+        setFolderContent("");
       } catch (error) {
         console.error("Error creating folder:", error);
       }
-    }
+    // }
   };
 
   const handleFolderDelete = async (idx) => {
@@ -68,6 +70,11 @@ export default function TaskFolder() {
           onChange={(e) => setFolderName(e.target.value)}
           placeholder="Enter folder name here"
         />
+        <input
+          value={folderContent}
+          onChange={(e) => setFolderContent(e.target.value)}
+          placeholder="Enter folder content here"
+        />
         <button className="newfolderbutton" onClick={handleFolderCreation}>+ folder</button>
       </div>
 
@@ -86,10 +93,10 @@ export default function TaskFolder() {
                   value={editedName}
                   onChange={(e) => setEditedName(e.target.value)}
                 />
-                <textarea
+                <input
                 value={editedContent}
                 onChange={(e) => setEditedContent(e.target.value)}
-                placeholder="Enter folder content here"
+                placeholder=""
               />
               </>
               ) : (

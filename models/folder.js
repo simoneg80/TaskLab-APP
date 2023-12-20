@@ -7,7 +7,7 @@ const folderSchema = new mongoose.Schema({
   },
   content: {
     type: String, 
-    default: "Enter text here", 
+  
   },
   
   createdAt: {

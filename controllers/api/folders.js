@@ -20,27 +20,28 @@ async function getAllTaskFolders(req, res) {
 }
 
 async function createTaskFolder(req, res) {
+  console.log(req.body);
   try {
-    const { name } = req.body;
+    const { name, content } = req.body;
     const folder = await Folder.create({
       ...req.body,
       name: name,
+      content: content,
       user: req.user._id,
     });
     console.log(folder);
     res.status(201).json(folder);
   } catch (err) {
     res.status(500).json({ error: "Internal server error" });
-    console.log(req.user._id);
+    console.log(err);
   }
 }
 
 async function editFolder(req, res) {
   try {
-    const { name: newName } = req.body;
     const folder = await Folder.findOneAndUpdate(
       { _id: req.params.id },
-      { name: newName },
+      { name: req.body.name, content: req.body.content },
       { new: true }
     );
     if (!folder) {
