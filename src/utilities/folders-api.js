@@ -28,11 +28,11 @@ export const createFolder = async (folderName, folderContent, folderDueDate) => 
 };
 
 export const editFolder = async ( folderId, newFolder ) => {
-  console.log(folderId, newFolder);
+  console.log("req:", folderId, newFolder);
   try {
     const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", newFolder);
 
-    console.log(response);
+    console.log("res:", response);
     return response;
   } catch (error) {
     console.error("Error editing folder:", error);

@@ -42,7 +42,12 @@ async function editFolder(req, res) {
   try {
     const folder = await Folder.findOneAndUpdate(
       { _id: req.params.id },
-      { name: req.body.name, content: req.body.content, dueDate: req.body.dueDate },
+      {
+        name: req.body.name,
+        content: req.body.content,
+        dueDate: req.body.dueDate,
+        color: req.body.color,
+      },
       { new: true }
     );
     if (!folder) {
