@@ -35,8 +35,8 @@ export default function App() {
             {/* <Route path="/TaskFolder/:folderId" component={<TaskList />} /> */}
           </Routes>
           <TaskFolder />
-          <TaskList tasks={tasks} />
-          <NewTaskListForm addTaskList={addTaskList} />
+          {/* <TaskList tasks={tasks} />
+          <NewTaskListForm addTaskList={addTaskList} /> */}
         </>
       ) : (
         <AuthPage setUser={setUser} />
