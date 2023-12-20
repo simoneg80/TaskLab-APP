@@ -33,11 +33,7 @@ export default function UserProfile({ user, setUser }) {
       </div>
       <div>
         <label>Email:</label>
-        <input
-          type="email"
-          value={credentials.email}
-          onChange={(e) => handleChange(e, 'email')}
-        />
+        <h3>{credentials.email}</h3>
       </div>
       <button onClick={handleUpdate}>Save Changes</button>
     </div>
