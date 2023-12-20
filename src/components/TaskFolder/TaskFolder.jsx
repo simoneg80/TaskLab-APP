@@ -97,7 +97,7 @@ export default function TaskFolder() {
         </button>
       </div>
 
-      <div>
+      <div className="folder-container">
         {folders &&
           folders.map((folder, idx) => (
             <div
