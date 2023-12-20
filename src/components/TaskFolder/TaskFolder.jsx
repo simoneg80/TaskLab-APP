@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as foldersService from "../../utilities/folders-service";
+import "./TaskFolder.css";
 
 export default function TaskFolder() {
   const [folderName, setFolderName] = useState([]);
@@ -82,15 +83,15 @@ export default function TaskFolder() {
 
   return (
     <>
-      <h1> Task Folder </h1>
-      <div>
+      <div className="taskfolder">
+      <h1 className="taskfoldertitle"> Your Task Folders</h1>
         <input
           type="text"
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}
           placeholder="Enter folder name here"
         />
-        <button onClick={handleFolderCreation}>Create Folder</button>
+        <button className="newfolderbutton" onClick={handleFolderCreation}>+ folder</button>
       </div>
 
       <div>

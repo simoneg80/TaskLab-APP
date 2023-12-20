@@ -1,0 +1,19 @@
+.taskfolder {
+    margin: 100px;
+}
+
+.newfolderbutton {
+    border: 2.5px solid;
+    background-color: #ff8552;
+    
+}
+
+.taskfoldertitle {
+    font-family: 'caveat', cursive;
+    font-size: 4rem;
+    width: 100%;
+    border: ;
+    transition: all 0.3s ease-in-out;
+    padding: 0.3rem 0.8rem;
+    
+}
