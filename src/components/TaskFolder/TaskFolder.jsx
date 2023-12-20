@@ -10,6 +10,7 @@ export default function TaskFolder() {
   const [folderContent, setFolderContent] = useState("");
   const [editedContent, setEditedContent] = useState("");
   const [folderDueDate, setFolderDueDate] = useState("");
+  const [editedFolderDate, setEditedFolderDate] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +35,7 @@ export default function TaskFolder() {
         folderContent,
         folderDueDate
       );
-        console.log(newFolder);
+      console.log(newFolder);
       setFolders([...folders, newFolder]);
       setFolderName("");
       setFolderContent("");
@@ -54,11 +55,13 @@ export default function TaskFolder() {
     if (editedName === "") {
       setEditIndex(idx);
       setEditedName(folders[idx].name);
-      setFolderContent(folders[idx].content);
+      setEditedContent(folders[idx].content);
+      setEditedFolderDate(folders[idx].dueDate);
     } else {
       await foldersService.editFolder(folders[idx]._id, {
         name: editedName,
         content: editedContent,
+        dueDate: editedFolderDate,
       });
       const updatedFolders = await foldersService.getAllFolders();
       setFolders(updatedFolders);
@@ -110,9 +113,14 @@ export default function TaskFolder() {
                     onChange={(e) => setEditedName(e.target.value)}
                   />
                   <input
+                    type="text"
                     value={editedContent}
                     onChange={(e) => setEditedContent(e.target.value)}
-                    placeholder=""
+                  />
+                  <input
+                    type="date"
+                    value={editedFolderDate}
+                    onChange={(e) => setEditedFolderDate(e.target.value)}
                   />
                 </>
               ) : (
