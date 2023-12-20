@@ -30,6 +30,7 @@ async function createTaskFolder(req, res) {
 }
 
 async function editFolder(req, res) {
+  console.log(req.body)
   try {
     const { newName } = req.body;
     const folder = await Folder.findOneAndUpdate({ id: req.params.id }, { name: newName }, { new: true });
@@ -38,8 +39,9 @@ async function editFolder(req, res) {
     }
     res.status(200).json(folder);
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.status(500).json({ error: "Internal server error" });
+
   }
 }
 
