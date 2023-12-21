@@ -7,9 +7,7 @@ import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
 import FullCalendarPage from "../FullCalenderPage/FullCalenderPage";
-
 import LoginPage from "../LoginPage/LoginPage";
-
 import * as foldersService from "../../utilities/folders-service";
 
 
