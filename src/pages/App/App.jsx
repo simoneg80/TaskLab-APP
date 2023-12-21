@@ -6,11 +6,11 @@ import NavBar from "../../components/NavBar/NavBar";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
+import FullCalendarPage from "../FullCalenderPage/FullCalenderPage";
 
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [tasks, setTasks] = useState([]);
   
   return (
     <main className="App">
@@ -25,6 +25,10 @@ export default function App() {
              <Route
               path="/TaskFolder"
               element={<TaskFolder user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/CalendarPage"
+              element={<FullCalendarPage user={user} setUser={setUser} />}
             />
           </Routes>
         </>
