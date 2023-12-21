@@ -7,6 +7,7 @@ import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
 import FullCalendarPage from "../FullCalenderPage/FullCalenderPage";
+import LoginPage from "../LoginPage/LoginPage";
 
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
               element={<UserProfilePage user={user} setUser={setUser} />}
             />
              <Route
-              path="/TaskFolder"
+              path="/"
               element={<TaskFolder user={user} setUser={setUser} />}
             />
             <Route
@@ -33,7 +34,21 @@ export default function App() {
           </Routes>
         </>
       ) : (
-        <AuthPage setUser={setUser} />
+        <>
+        <Routes>
+        <Route
+          path="/LoginPage"
+          element={
+          <LoginPage user={user} setUser={setUser} />}/>
+        <Route
+        path="/"
+        element={<AuthPage setUser={setUser} />}/>
+        </Routes>
+        </>
+
+        
+
+        
       )}
     </main>
   );
