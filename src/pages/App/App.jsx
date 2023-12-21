@@ -11,7 +11,7 @@ import TaskFolder from "../../components/TaskFolder/TaskFolder";
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [tasks, setTasks] = useState([]);
-
+  
   return (
     <main className="App">
       {user ? (
