@@ -78,33 +78,35 @@ export default function TaskFolder({ user, setUser }) {
   return (
     <>
       <div className="taskfolder">
-        <h1 className="taskfoldertitle"> Your Task Folders</h1>
+        <h1 className="taskfoldertitle"> Your Tasks</h1>
+
+        <p className="welcomeusermsg">Hi {user.name}, create your task here!</p>
 
         <div className="welcome">
-
-        <p>Hi, {user.name}! Here are your tasks for the day.</p>
-
         &nbsp;&nbsp;
         &nbsp;&nbsp;{" "}
         </div>
         <input
+          id="inputtaskfolder"
           type="text"
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}
           placeholder="Enter folder name here"
         />
         <input
+          id="inputtaskfolder"
           value={folderContent}
           onChange={(e) => setFolderContent(e.target.value)}
-          placeholder="Enter folder content here"
+          placeholder="Enter task(s) here"
         />
         <input
+          id="inputtaskfolder"
           type="date"
           value={folderDueDate}
           onChange={(e) => setFolderDueDate(e.target.value)}
         />
         <button className="newfolderbutton" onClick={handleFolderCreation}>
-          + folder
+          +Task
         </button>
       </div>
 
@@ -118,18 +120,18 @@ export default function TaskFolder({ user, setUser }) {
               style={{ backgroundColor: folder.color }}
             >
               {editIndex === idx ? (
-                <>
-                  <input
+                <div className="edittask">
+                  <input className="field1"
                     type="text"
                     value={editedName}
                     onChange={(e) => setEditedName(e.target.value)}
                   />
-                  <input
+                  <input className="field2"
                     type="text"
                     value={editedContent}
                     onChange={(e) => setEditedContent(e.target.value)}
                   />
-                  <input
+                  <input className="field3"
                     type="date"
                     value={editedFolderDate}
                     onChange={(e) => setEditedFolderDate(e.target.value)}
@@ -154,7 +156,7 @@ export default function TaskFolder({ user, setUser }) {
                     <option value="#b1d3f6">Sky Blue</option>
                     <option value="#8ca0ff">Lavander</option>
                   </select>
-                </>
+                </div>
               ) : (
                 <>
                   <h3>{folder.name}</h3>
@@ -163,11 +165,11 @@ export default function TaskFolder({ user, setUser }) {
                 </>
               )}
               {editIndex === idx ? (
-                <button onClick={() => handleFolderEdit(idx)}>Save</button>
+                <button className="taskcardsave" onClick={() => handleFolderEdit(idx)}>Save</button>
               ) : (
-                <button onClick={() => handleFolderEdit(idx)}>Edit</button>
+                <button className="taskcarded" onClick={() => handleFolderEdit(idx)}>Edit</button>
               )}
-              <button onClick={() => handleFolderDelete(idx)}>Delete</button>
+              <button className="taskcarddel" onClick={() => handleFolderDelete(idx)}>Delete</button>
             </div>
           ))}
       </div>
