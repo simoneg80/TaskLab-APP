@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import AuthPage from "../AuthPage/AuthPage";
@@ -6,11 +6,28 @@ import NavBar from "../../components/NavBar/NavBar";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import "./App.css";
 import TaskFolder from "../../components/TaskFolder/TaskFolder";
+import FullCalendarPage from "../FullCalenderPage/FullCalenderPage";
+
+import LoginPage from "../LoginPage/LoginPage";
+
+import * as foldersService from "../../utilities/folders-service";
 
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [tasks, setTasks] = useState([]);
+  const [folders, setFolders] = useState([]);
+
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const allFolders = await foldersService.getAllFolders();
+          setFolders(allFolders);
+        } catch (error) {
+          console.error("Error fetching folders:", error);
+        }
+      };
+      fetchData();
+    }, []);
   
   return (
     <main className="App">
@@ -26,10 +43,28 @@ export default function App() {
               path="/TaskFolder"
               element={<TaskFolder user={user} setUser={setUser} />}
             />
+            <Route
+              path="/CalendarPage"
+              element={<FullCalendarPage folders={folders} />}
+            />
           </Routes>
         </>
       ) : (
-        <AuthPage setUser={setUser} />
+        <>
+        <Routes>
+        <Route
+          path="/LoginPage"
+          element={
+          <LoginPage user={user} setUser={setUser} />}/>
+        <Route
+        path="/"
+        element={<AuthPage setUser={setUser} />}/>
+        </Routes>
+        </>
+
+        
+
+        
       )}
     </main>
   );

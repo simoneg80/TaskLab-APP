@@ -18,9 +18,13 @@ export default function NavBar({ user, setUser }) {
       </span>
         <Link to="/TaskFolder">Task Folder</Link>
         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <Link to="" onClick={handleLogOut}>
+        <Link to="/CalendarPage">Calendar</Link>
+        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <Link to="/TaskFolder" onClick={handleLogOut}>
           Log Out
         </Link>
+        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <Link to="/LoginPage">Login</Link>
       </nav>
     </div>
   );
