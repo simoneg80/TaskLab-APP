@@ -1,4 +1,4 @@
-# TaskzLab 
+# TaskLab 
 SEI Project 4 MERN Stack Web Application
 
 # Web Application Description
