@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import './UserProfile.css';
 
 export default function UserProfile({ user, setUser }) {
   const [credentials, setCredentials] = useState({
@@ -21,21 +22,23 @@ export default function UserProfile({ user, setUser }) {
   }
 
   return (
-    <div className="profilepage">
-      <h2 className='profiletitle'>{credentials.name}'s Account Information</h2>
+  <>
+    <h2 className='profiletitle'>{credentials.name}'s Profile Information</h2>
+      <div className="profilepage">
       <div>
-        <label>Name:</label>
-        <input
+        <label>Name: {credentials.name}</label>
+        {/* <input
           type="text"
           value={credentials.name}
           onChange={(e) => handleChange(e, 'name')}
-        />
+        /> */}
       </div>
       <div>
-        <label>Email:</label>
-        <h3>{credentials.email}</h3>
+        <label>Email: {credentials.email}</label>
+        {/* <p>{credentials.email}</p> */}
       </div>
-      <button onClick={handleUpdate}>Save Changes</button>
+      {/* <button className="saveuserchange" onClick={handleUpdate}>Save Changes</button> */}
     </div>
+  </>
   );
 }

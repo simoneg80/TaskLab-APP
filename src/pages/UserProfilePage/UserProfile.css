@@ -1,0 +1,26 @@
+.profilepage{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 15vh;
+    max-width: 30vh;
+    margin-top: 5vh;
+    border: solid 5px #3D405B;
+    border-radius: 10px;
+    margin: auto;
+    font-family: 'times new roman';
+    font-weight: 600;
+    background-color: #81b29a;
+    color: #3D405B;
+}
+
+.profiletitle{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 16vh;
+    color: ;
+    font-family: 'marker felt';
+    text-decoration: underline;
+    color: #E07A5F;
+}

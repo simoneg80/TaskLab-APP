@@ -4,20 +4,23 @@
 
 .newfolderbutton {
   border: 2.5px solid;
-  background-color: #ff8552;
+  background-color: #e07a5f;
 }
 
 .taskfoldertitle {
   font-family: "caveat", cursive;
   font-size: 4rem;
   width: 100%;
-  border: 2.5px solid;
+  text-decoration: underline #e07a5f;
+  border-radius: 3%;
   transition: all 0.3s ease-in-out;
   padding: 0.3rem 0.8rem;
+  color: #3d405b;
 }
 
 .folder-card {
-  border: 2.5px solid;
+  border: 2.5px solid #3d405b;
+  border-radius: 3%;
   background-color: #81b29a;
   transition: all 0.3s ease-in-out;
   padding: 0.3rem 0.8rem;
@@ -33,4 +36,60 @@
   justify-content: center;
   align-items: center;
   margin: 100px;
+}
+
+.welcomeusermsg {
+  font-family: "caveat", cursive;
+  font-size: 1.7rem;
+  text-align: center;
+  font-weight: 990;
+  color: #3d405b;
+}
+
+.taskcarddel {
+  font-family: "marker felt", cursive;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: #f4f1de;
+}
+
+.taskcarded {
+  font-family: "marker felt", cursive;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: #f4f1de;
+}
+
+.edittask {
+  font-family: "marker felt", cursive;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  width: 255px;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+.taskcardsave {
+  font-family: "marker felt", cursive;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: #f4f1de;
+}
+
+.field1,
+.field2,
+.field3 {
+  margin: 10px;
+  background-color: #f4f1de;
+}
+
+.color-picker {
+  background-color: #f4f1de;
+  border: 2px solid #f4f1de;
+  border-radius: 5px;
+  margin: 18px;
 }
