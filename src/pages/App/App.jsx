@@ -38,7 +38,7 @@ export default function App() {
               element={<UserProfilePage user={user} setUser={setUser} />}
             />
              <Route
-              path="/"
+              path="/TaskFolder"
               element={<TaskFolder user={user} setUser={setUser} />}
             />
             <Route
