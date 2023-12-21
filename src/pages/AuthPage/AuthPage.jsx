@@ -13,10 +13,7 @@ export default function AuthPage ({ setUser }) {
                 <h1 className="Logintitle">TaskLab.</h1>
                 <h4 className="loginslogan">join the lab and start your tasks...</h4>
                 <SignUpForm setUser={ setUser } />
-                
-            
             </div>
         </main>
-
     );
 }

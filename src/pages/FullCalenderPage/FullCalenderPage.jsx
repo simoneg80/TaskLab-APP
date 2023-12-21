@@ -2,7 +2,6 @@ import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import { useState, useEffect } from 'react';
-import * as foldersService from "../../utilities/folders-service";
 
 export default function FullCalendarPage({folders}) {
     const [calendarEvents, setCalendarEvent] = useState([]);

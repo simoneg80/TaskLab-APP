@@ -35,12 +35,10 @@ async function login(req, res) {
 }
 
 function checkToken(req, res) {
-  // req.user will always be there for you when a token is sent
   console.log("req.user", req.user);
   res.json(req.exp);
 }
 
-//Helper Functions
 function createJWT(user) {
   return jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
 }
@@ -49,17 +47,10 @@ async function update(req, res) {
   try {
     const user = await User.findById(req.user._id);
     if (!user) throw new Error("User not found");
-
-    // Update user data
     user.name = req.body.name;
     user.email = req.body.email;
-
-    // Save the updated user data
     await user.save();
-
-    // Create a new token with the updated user data
     const token = createJWT(user);
-
     res.json(token);
   } catch (err) {
     res.status(400).json(err);

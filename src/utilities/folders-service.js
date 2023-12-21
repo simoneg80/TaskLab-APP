@@ -13,19 +13,12 @@ export async function getAllFolders() {
 }
 
 export async function createFolder(folderName, folderContent, folderDueDate) {
-  // if (folderName.trim() !== "") {
   try {
-  
     const createdFolder = await foldersAPI.createFolder(folderName, folderContent, folderDueDate);
-    // folders.push(folder);
-    // folders.push(folderName);
-    // folders.push(folderContent);
-    console.log(createdFolder);
     return createdFolder;
   } catch (error) {
     console.error("Error creating folder:", error);
   }
-  // }
 }
 
 export function getFolders() {
