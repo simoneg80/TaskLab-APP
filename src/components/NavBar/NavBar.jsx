@@ -10,6 +10,7 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
+    
     <div className="navbody">
       <nav className="navcontent">
       <Link to="/profile">Profile</Link>
