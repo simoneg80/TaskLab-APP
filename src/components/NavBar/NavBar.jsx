@@ -16,7 +16,6 @@ export default function NavBar({ user, setUser }) {
         <span className="navseparator">
         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       </span>
-        &nbsp;&nbsp;{" "}
         <Link to="/TaskFolder">Task Folder</Link>
         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         <Link to="" onClick={handleLogOut}>

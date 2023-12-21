@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import * as userService from "../../utilities/users-service";
 import * as foldersService from "../../utilities/folders-service";
 import "./TaskFolder.css";
 
-export default function TaskFolder() {
+export default function TaskFolder({ user, setUser }) {
   const [folderName, setFolderName] = useState([]);
   const [folders, setFolders] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
@@ -78,6 +79,9 @@ export default function TaskFolder() {
     <>
       <div className="taskfolder">
         <h1 className="taskfoldertitle"> Your Task Folders</h1>
+        &nbsp;&nbsp;
+        <span>Welcome, {user.name}</span>
+        &nbsp;&nbsp;{" "}
         <input
           type="text"
           value={folderName}
@@ -94,7 +98,6 @@ export default function TaskFolder() {
           value={folderDueDate}
           onChange={(e) => setFolderDueDate(e.target.value)}
         />
-
         <button className="newfolderbutton" onClick={handleFolderCreation}>
           + folder
         </button>
@@ -107,7 +110,7 @@ export default function TaskFolder() {
               key={`${folder.name} + ${idx}`}
               idx={idx}
               className="folder-card"
-              style={{backgroundColor: folder.color }}
+              style={{ backgroundColor: folder.color }}
             >
               {editIndex === idx ? (
                 <>
@@ -126,7 +129,7 @@ export default function TaskFolder() {
                     value={editedFolderDate}
                     onChange={(e) => setEditedFolderDate(e.target.value)}
                   />
-                    <select
+                  <select
                     className="color-picker"
                     value={colorPicker}
                     onChange={(e) => setColorPicker(e.target.value)}
