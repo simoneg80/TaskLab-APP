@@ -3,17 +3,34 @@ SEI Project 4 MERN Stack Web Application
 
 # Web Application Description
 
+TaskLab is a task tracking web application designed to help users manage their daily tasks with efficiency. It provides a user-friendly interface where users can create, update, and delete tasks. Each task can be assigned a custom color and due date for easy categorization and daily organization.
+
+TaskLab also offers an integrated calendar that allows users to view tasks based on calendar view, which allows users to see the status of their tasks at a glance. Tasks are displayed with the color customization selected by the user.
+
+TaskLab is built with a focus on productivity and efficiency, aiming to make task management as seamless and straightforward as possible.
+
 ## Application Images
 
 ### Planning
 
 ### Technologies Used
+  * MERN Stack
+  * React
+  * Mongoose / MongoDB
+  * Express Framework
+  * CSS Web Framework
+  * Node.js
+  * Full Calendar
+  
 
 ## Challenging Code
 
 ## Web App Link
 
 ## Next Steps
+  * Implement functionality that renders a list of completed tasks
+  * Set reminders for each user's task
+  * Drag and drop function
 
 ## The MIT License (MIT)
 Copyright (c) 2023 AKS
