@@ -79,8 +79,8 @@ export default function TaskFolder({ user, setUser }) {
     <>
       <div className="taskfolder">
         <h1 className="taskfoldertitle"> Your Task Folders</h1>
+        <p>Hi, {user.name}! Here are your tasks for the day.</p>
         &nbsp;&nbsp;
-        <span>Welcome, {user.name}</span>
         &nbsp;&nbsp;{" "}
         <input
           type="text"
