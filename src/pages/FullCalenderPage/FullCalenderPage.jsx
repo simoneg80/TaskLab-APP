@@ -13,6 +13,7 @@ export default function FullCalendarPage({folders}) {
                 foldersEvents.push({
                     title: folder.name,
                     date: folder.dueDate,
+                    color: folder.color,
                 });
             })
             setCalendarEvent(foldersEvents);
