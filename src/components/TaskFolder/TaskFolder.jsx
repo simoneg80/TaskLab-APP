@@ -78,30 +78,29 @@ export default function TaskFolder({ user, setUser }) {
   return (
     <>
       <div className="taskfolder">
-        <h1 className="taskfoldertitle"> Your Task Folders</h1>
+        <h1 className="taskfoldertitle"> Your Tasks</h1>
 
-        <p className="welcomeusermsg">Hi {user.name}, here are your tasks for the day!</p>
+        <p className="welcomeusermsg">Hi {user.name}, create your task here!</p>
 
         <div className="welcome">
-
-        <p>Hi, {user.name}! Here are your tasks for the day.</p>
-
-
         &nbsp;&nbsp;
         &nbsp;&nbsp;{" "}
         </div>
         <input
+          id="inputtaskfolder"
           type="text"
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}
           placeholder="Enter folder name here"
         />
         <input
+          id="inputtaskfolder"
           value={folderContent}
           onChange={(e) => setFolderContent(e.target.value)}
           placeholder="Enter task(s) here"
         />
         <input
+          id="inputtaskfolder"
           type="date"
           value={folderDueDate}
           onChange={(e) => setFolderDueDate(e.target.value)}
