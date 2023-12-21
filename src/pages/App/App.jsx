@@ -59,10 +59,6 @@ export default function App() {
         element={<AuthPage setUser={setUser} />}/>
         </Routes>
         </>
-
-        
-
-        
       )}
     </main>
   );

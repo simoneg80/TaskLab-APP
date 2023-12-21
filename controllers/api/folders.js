@@ -14,13 +14,11 @@ async function getAllTaskFolders(req, res) {
       .exec();
     res.json(taskFolders);
   } catch (err) {
-    console.log(err);
     res.status(500).json({ error: "Internal server error" });
   }
 }
 
 async function createTaskFolder(req, res) {
-  console.log(req.body);
   try {
     const { name, content, dueDate } = req.body;
     const folder = await Folder.create({
@@ -34,7 +32,6 @@ async function createTaskFolder(req, res) {
     res.status(201).json(folder);
   } catch (err) {
     res.status(500).json({ error: "Internal server error" });
-    console.log(err);
   }
 }
 

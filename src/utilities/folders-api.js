@@ -6,7 +6,6 @@ export const getAllFolders = async () => {
     const response = await sendRequest(`${BASE_URL}`, "GET");
     return response;
   } catch (error) {
-    console.log(error);
     console.error("Error fetching folders:", error);
   }
 };
@@ -17,9 +16,7 @@ export const createFolder = async (folderName, folderContent, folderDueDate) => 
       name: folderName,
       content: folderContent,
       dueDate: folderDueDate,
-
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.error("Error creating folder:", error);
@@ -31,8 +28,6 @@ export const editFolder = async ( folderId, newFolder ) => {
   console.log("req:", folderId, newFolder);
   try {
     const response = await sendRequest(`${BASE_URL}/${folderId}`, "PUT", newFolder);
-
-    console.log("res:", response);
     return response;
   } catch (error) {
     console.error("Error editing folder:", error);

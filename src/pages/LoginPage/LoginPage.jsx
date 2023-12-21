@@ -13,6 +13,5 @@ export default function LoginPage ({ setUser }) {
                 <LoginForm  setUser={setUser}  />
             </div>
         </main>
-
     );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as userService from "../../utilities/users-service";
+
 import * as foldersService from "../../utilities/folders-service";
 import "./TaskFolder.css";
 
@@ -29,7 +29,6 @@ export default function TaskFolder({ user, setUser }) {
   }, []);
 
   const handleFolderCreation = async (evt) => {
-    // if (folderName.trim() !== "") {
     evt.preventDefault();
     try {
       const newFolder = await foldersService.createFolder(
@@ -69,7 +68,6 @@ export default function TaskFolder({ user, setUser }) {
       });
       const updatedFolders = await foldersService.getAllFolders();
       setFolders(updatedFolders);
-
       setEditIndex(null);
       setEditedName("");
     }
@@ -79,13 +77,12 @@ export default function TaskFolder({ user, setUser }) {
     <>
       <div className="taskfolder">
         <h1 className="taskfoldertitle"> Your Tasks</h1>
-
         <p className="welcomeusermsg">Hi {user.name}, create your task here!</p>
-
         <div className="welcome">
         &nbsp;&nbsp;
         &nbsp;&nbsp;{" "}
         </div>
+
         <input
           id="inputtaskfolder"
           type="text"

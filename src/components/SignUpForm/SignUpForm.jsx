@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { signUp } from "../../utilities/users-service";
 
-// SignUpForm extends from the Component class
+
 export default class SignUpForm extends Component {
     
     state = {
@@ -12,29 +12,26 @@ export default class SignUpForm extends Component {
         error: ''
       };
 
-      // The object passed to setState is merged with the current state object
     handleChange = (evt) => {
         this.setState({
             [evt.target.name]: evt.target.value,
             error: ''
         });
     };
+    
     handleSubmit = async (evt) => {
         evt.preventDefault();
         try {
           const formData = {...this.state};
           delete formData.error;
           delete formData.confirm;
-
           const user = await signUp(formData);
-
           this.props.setUser(user);
         } catch {
           this.setState({ error: 'oops, try that again!' });
         }
     };
-    //  every class based component needs to have a render() function
-    //within the render() function, we need to return some JSX
+    
     render() {
         const disable = this.state.password !== this.state.confirm;
     return (
@@ -57,5 +54,3 @@ export default class SignUpForm extends Component {
       );
     } 
 }   
-//   Now we can import this component into our AuthPage component and render it to the 
-//screen
