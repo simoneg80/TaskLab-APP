@@ -131,10 +131,20 @@ export default function TaskFolder() {
                     value={colorPicker}
                     onChange={(e) => setColorPicker(e.target.value)}
                   >
-                    <option value="#81B29A">Green</option>
-                    <option value="#F2CC8F">Yellow</option>
-                    <option value="#F3A867">Orange</option>
-                    <option value="#F96464">Red</option>
+                    <option value="#FFF9B1">Peacefull Yellow</option>
+                    <option value="#ffc000">Hungry Yellow</option>
+                    <option value="#E07A5F">Terracota</option>
+                    <option value="#daf7a1">Breeze Green</option>
+                    <option value="#C9DF56">Tree Green</option>
+                    <option value="#b6d7a8">Darker Green</option>
+                    <option value="#81B29A">Sage Green</option>
+                    <option value="#ff0000">Salmon</option>
+                    <option value="#eca2c4">Barbie</option>
+                    <option value="#FFCEE0">Also Barbie</option>
+                    <option value="#b485bc">Purple</option>
+                    <option value="#3D405B">Deep Purple</option>
+                    <option value="#b1d3f6">Sky Blue</option>
+                    <option value="#8ca0ff">Lavander</option>
                   </select>
                 </>
               ) : (
