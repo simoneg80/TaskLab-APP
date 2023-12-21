@@ -13,6 +13,16 @@ TaskLab is built with a focus on productivity and efficiency, aiming to make tas
 
 ### Planning
 
+<img width="540" alt="Screenshot 2023-12-21 at 2 10 49 AM" src="https://github.com/simoneg80/TaskLab-APP/assets/145403760/74a7591d-58c1-45b6-be44-2aa89f8bfa05">
+
+### Web App
+
+
+<img width="1328" alt="Screenshot 2023-12-21 at 2 11 09 AM" src="https://github.com/simoneg80/TaskLab-APP/assets/145403760/3df61083-445f-4c31-9258-8fc41e213afb">
+
+<img width="1437" alt="Screenshot 2023-12-21 at 2 11 25 AM" src="https://github.com/simoneg80/TaskLab-APP/assets/145403760/b04722fc-ed55-45f1-ba1b-0a4487fe279f">
+
+
 ### Technologies Used
   * MERN Stack
   * React
